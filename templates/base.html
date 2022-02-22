@@ -1,0 +1,258 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- CSS -->
+    <link href='https://fonts.googleapis.com/css?family=Roboto Mono&display=swap' rel='stylesheet'>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+	<style>
+
+			:root {
+				--color-text: #FFFFFF;
+				--color-fadedtext: #777777;
+				--color-abouttext: #afafaf;
+				--color-back: #303030;
+				--color-dark: #212121;
+				--color-front: #424242;
+				--color-error: #CF6679;
+				--color-lighttext: #cccccc;
+			}
+
+			[data-theme="dl2"] {
+				--color-alphakey: #d1d1cf;
+				--color-betakey: #a4a4a4;
+				--color-primarykey: #ed94a4;
+				--color-secondarykey: #a5cbc0;
+				--color-alphakeytext: #212121;
+				--color-betakeytext: #212121;
+				--color-primary: #3cd1db;
+			}
+			[data-theme="camping"] {
+				--color-alphakey: #dbdbdd;
+				--color-betakey: #547b66;
+				--color-primarykey: #7e434d;
+				--color-secondarykey: #7e434d;
+				--color-alphakeytext: #547b66;
+				--color-betakeytext: #dbdbdd;
+				--color-primary: #6ec496;
+			}
+			[data-theme="laser"] {
+				--color-alphakey: #2a1866;
+				--color-betakey: #241d47;
+				--color-primarykey: #b2174f;
+				--color-secondarykey: #b2174f;
+				--color-alphakeytext: #199eb2;
+				--color-betakeytext: #b2174f;
+				--color-primary: #1fb9d1;
+			}
+			[data-theme="carbon"] {
+				--color-alphakey: #fbf0d6;
+				--color-betakey: #5a5a5a;
+				--color-primarykey: #f17a49;
+				--color-secondarykey: #5a5a5a;
+				--color-alphakeytext: #5a5a5a;
+				--color-betakeytext: #f17a49;
+				--color-primary: #f17a49;
+			}
+			[data-theme="olivia"] {
+				--color-alphakey: #302f2d;
+				--color-betakey: #302f2d;
+				--color-primarykey: #dcad9b;
+				--color-secondarykey: #dcad9b;
+				--color-alphakeytext: #dcad9b;
+				--color-betakeytext: #dcad9b;
+				--color-primary: #dcad9b;
+			}
+
+			body {
+				background-color: var(--color-back);
+				color: var(--color-fadedtext);
+				font-family: 'Roboto Mono';
+				font-feature-settings: "liga" 0;
+				overflow-y: auto;
+				overflow-x: hidden;
+				height: 100vh;
+			}
+
+			button[type="button"] {
+				outline: none;
+			}
+
+			.content {
+				display: flex;
+				flex-direction: column;
+				height: 100%;
+			}
+			#page {
+				display: flex;
+				flex-direction: column;
+			}
+			.content-section {
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				margin: 20px;
+			}
+			.content-navbar {
+				display: inline-flex;
+				justify-content: space-between;
+				background-color: var(--color-dark);
+				color: var(--color-fadedtext);
+				padding: 0px 20%;
+			}
+			.content-navbar > .item-left {
+				display: inline-flex;
+				justify-content: flex-start;
+				padding: 10px;
+				font-size: 20px;
+				width: 50%;
+			}
+			.content-navbar > .item-right {
+				display: inline-flex;
+				justify-content: flex-end;
+				padding: 20px;
+				font-size: 20px;
+				width: 50%;
+			}
+			.content-navbar > .item-left > .title {
+				display: flex;
+				align-items: center;
+				color: var(--color-text);
+				margin-right: 30px;
+			}
+			.content-navbar > .item-left > .title:hover {
+				cursor: pointer;
+				color: var(--color-fadedtext);
+			}
+			.content-navbar > div > .link {
+				display: flex;
+				align-items: center;
+				margin-right: 20px;
+				font-size: 15px;
+				color: var(--color-fadedtext);
+			}
+			.content-navbar > div > .link:hover {
+				cursor: pointer;
+				color: var(--color-text);
+				text-decoration: none;
+			}
+
+			.content-header {
+				display: flex;
+				flex-direction: column;
+				width: 45%;
+				margin: 20px auto;
+			}
+			.content-header-title {
+				display: inline-flex;
+				justify-content: center;
+				font-size: 60px;
+				margin: 20px;
+			}
+			.content-header-title > .letter {
+				padding: 0px 8px;
+				display: flex;
+				align-items: center;
+			}
+			.content-header-body {
+				display: inline-flex;
+				justify-content: space-around;
+			}
+			.content-header-body > .link {
+				display: inline-flex;
+				justify-content: center;
+				width: 90px;
+				padding: 10px;
+				border-bottom: 2px solid;
+				color: var(--color-fadedtext);
+				font-size: 20px;
+			}
+			.content-header-body > .link:hover, .content-header-body > .link.active {
+				color: var(--color-primary);
+				font-size: 20px;
+				text-decoration: none;
+			}
+
+			.about {
+				display: flex;
+				align-items: center;
+				flex-direction: column;
+				width: 40%;
+				margin: 40px;
+			}
+			.about > .section {
+				display: flex;
+				flex-direction: column;
+				align-items: flex-start;
+				width: 100%;
+				margin-bottom: 20px;
+			}
+			.section-title {
+				font-size: 26px;
+				color: var(--color-primary);
+				margin-bottom: 20px;
+			}
+			.section-body {
+				color: var(--color-abouttext);
+				margin-bottom: 10px;
+				font-size: 18px;
+			}
+
+			.content-footer {
+				display: flex;
+				height: 100%;
+			}
+
+
+	</style>
+    {% block header %}{% endblock %}
+    
+    <!-- JS -->
+    <!-- <script type="text/javascript" src="{% static 'js/app/config.js' %}"></script>s -->
+
+    <!-- Title -->
+    {% if title %}
+        <title>SMS - {{ title }}</title>
+    {% else %}
+        <title>SMS</title>
+    {% endif %}
+
+</head>
+<body>
+    <!-- Content -->
+    <div class="content">
+        <nav class="content-navbar">
+            <div class="item-left">
+                <div class="title">SMS</div>
+				{% if user.is_authenticated %}
+					<a class="link" href="{% url 'settings' %}">Settings</a>
+                {% else %}
+            
+                {% endif %}
+            </div>
+            <div class="item-right">
+                {% if user.is_authenticated %}
+					<a class="link" href="{% url 'index' %}">Start Conversation</a>
+                    <a class="link" href="{% url 'logout' %}">Logout</a>
+                {% else %}
+                    <a class="link" href="{% url 'register' %}">Register</a>
+                    <a class="link" href="{% url 'login' %}">Login</a>
+                {% endif %}
+            </div>
+        </nav>
+        <div class="content-section">{% block content %}{% endblock %}</div>
+    </div>
+
+    <!-- JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/39a392d836.js" crossorigin="anonymous"></script>
+    {% block footer %}{% endblock %}
+</body>
+</html>

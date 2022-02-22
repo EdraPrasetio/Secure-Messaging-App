@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block title %}
+	Conversations
+{% endblock %}
+{% block content %}
+<div class='container'>
+	<h1><u>Welcome, {{user}}</u></h1>
+	<p>If you would like to delete your account, please type in your username below.</p>
+    <br>
+    {% if error %} 
+
+        {{error}}
+        <br>
+
+    {% endif %}
+	<form method='POST' action='{% url "del_user" %}'>
+		<fieldset>
+            {% csrf_token %}
+			<label for='del_username'>Username:</label>
+			<input name='del_username' type='text'/>
+            <input name='curr_username' type='hidden' value='{{user}}'/>
+			<button>submit</button>
+		</fieldset>
+	</form>
+	<br>
+</div>
+{% endblock %}

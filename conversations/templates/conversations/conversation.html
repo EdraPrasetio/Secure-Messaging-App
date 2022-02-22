@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block title %}{{ to_username }}{% endblock %}
+{% block content %}
+
+<div class='container text-center'>
+	<h1>Conversation with <u>{{ to_username }}</u></h1>
+	<br><br>
+	{% for message in message_list %}
+	<div style='margin-bottom: 10px'>
+		<b>{{ message.from_account }}</b>:&MediumSpace;<span>{{ message.text }}</span>&MediumSpace;<span style='margin-left: 50px; font-size: 8pt'>{{ message.created_at}}</span>
+	</div>
+	{% endfor %}
+	<div>
+		<form method='POST' action='{% url "send" %}'>
+			{% csrf_token %}
+			<input type='hidden' name='to_username' value='{{ to_username }}'/>
+			<label for='text'>Message</label>
+			<textarea name='text' placeholder='Enter your message here...'></textarea>
+			<button>send</button>
+		</form>
+	</div>
+
+	
+</div>
+{% endblock %}

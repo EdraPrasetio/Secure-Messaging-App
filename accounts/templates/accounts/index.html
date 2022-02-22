@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block title %}Login{% endblock %}
+
+{% block content %}
+<div>
+	<h1>Authenticate</h1>
+	<form id='authentication' action='authenticate' method='POST'>
+		<label for='username'>username</label>
+		<input id='username'
+			name='username'
+			size='32'
+			required/>
+		<label for='password'>password</label>
+		<input id='password'
+			name='password'
+			type='password'
+			size='32'
+			autocomplete='current-password'
+			required/>
+		<button>submit</button>
+	</form>
+</div>
+
+{% endblock %}

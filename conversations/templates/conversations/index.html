@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block title %}
+	Conversations
+{% endblock %}
+{% block content %}
+<div class='container'>
+	<h1><u>Welcome, {{user}}</u></h1>
+	<p>To message another User, please enter their username.</p>
+	<br>
+	<form method='GET' action='{% url "conversation" %}'>
+		<fieldset>
+			<label for='to_username'>Username of Correspondent:</label>
+			<input name='to_username' type='text'/>
+			<button>submit</button>
+		</fieldset>
+	</form>
+	<br>
+	<h5>If you do not know their username, you are able to select from the list below:</h5>
+	<br>
+	{% for user in user_list %}
+	<div style='margin-bottom: 10px'>
+		<form method='GET' action='{% url "conversation" %}'>
+			<fieldset>
+				<input type='hidden' name='to_username' value='{{user}}'/>
+				<button>{{user}}</button>
+			</fieldset>
+		</form>
+	</div>
+	{% endfor %}
+</div>
+
+{% endblock %}
